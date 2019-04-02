@@ -21,10 +21,14 @@ int partition_ver2(int data[], int p, int r);
 
 int partition_ver3(int data[], int p, int r);
 
-int analysis_heap(int i);
-
-void max_heapify(int i);
+void heap_sort();
 
 void heap_make();
 
-void heap_sort();
+void max_heapify(int i);
+
+int analysis_heap(int i);
+
+void library_sort();
+
+int compare_data_by_number(const void *p, const void *q);

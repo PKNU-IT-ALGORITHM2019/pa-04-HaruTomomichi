@@ -183,16 +183,21 @@ int partition_ver3(int data[], int p, int r) {
 	return i + 1;
 }
 
+void heap_sort() {
 
-int analysis_heap(int i) {
+	heap_make();
 
-	if (2 * i + 2 > N - 1) {
-		return (2 * i + 1);
+	for (int i = N - 1; i > 0; i--) {
+		swap(0, i);
+		N--;
+		max_heapify(0);
 	}
-	else if (data[2 * i + 1] > data[2 * i + 2]) {
-		return (2 * i + 1);
+}
+
+void heap_make() {
+	for (int i = N / 2; i >= 0; i--) {
+		max_heapify(i);
 	}
-	return (2 * i + 2);
 }
 
 void max_heapify(int i) {
@@ -211,19 +216,23 @@ void max_heapify(int i) {
 	max_heapify(k);
 }
 
-void heap_make() {
-	for (int i = N / 2; i >= 0; i--) {
-		max_heapify(i);
+int analysis_heap(int i) {
+
+	if (2 * i + 2 > N - 1) {
+		return (2 * i + 1);
 	}
+	else if (data[2 * i + 1] > data[2 * i + 2]) {
+		return (2 * i + 1);
+	}
+	return (2 * i + 2);
 }
 
-void heap_sort() {
+void library_sort() {
 
-	heap_make();
+	qsort(data, N, 4, compare_data_by_number);
 
-	for (int i = N - 1; i > 0; i--) {
-		swap(0, i);
-		N--;
-		max_heapify(0);
-	}
+}
+
+int compare_data_by_number(const void *p, const void *q) {
+	return *(int *)p - *(int *)q;
 }

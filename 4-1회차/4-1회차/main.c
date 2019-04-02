@@ -61,6 +61,10 @@ void print3() {
 	status = 7;
 	printf("Heap      \t");
 	print_all();
+
+	status = 8;
+	printf("Library   \t");
+	print_all();
 }
 
 void print_all() {
@@ -125,6 +129,10 @@ double test_start(int temp) {
 		}
 		case 7: {
 			heap_sort();
+			break;
+		}
+		case 8: {
+			library_sort();
 			break;
 		}
 		}
