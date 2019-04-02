@@ -234,5 +234,6 @@ void library_sort() {
 }
 
 int compare_data_by_number(const void *p, const void *q) {
+
 	return *(int *)p - *(int *)q;
 }

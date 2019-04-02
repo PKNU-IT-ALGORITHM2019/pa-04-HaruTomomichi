@@ -9,8 +9,8 @@ void main() {
 
 	srand((unsigned)time(NULL));
 
-	//print1();
-	//print2();
+	print1();
+	print2();
 	print3();
 	printf("Process Complete\n");
 	
@@ -51,8 +51,6 @@ void print2() {
 }
 
 void print3() {
-
-	printf("\t\tRand1000\tReve1000\tRand10000\tReve10000\tRand100000\tReve100000\n");
 
 	status = 6;
 	printf("Quick3    \t");

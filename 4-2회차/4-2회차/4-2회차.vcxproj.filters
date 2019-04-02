@@ -30,4 +30,9 @@
       <Filter>소스 파일</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="webLog.csv">
+      <Filter>소스 파일</Filter>
+    </None>
+  </ItemGroup>
 </Project>
