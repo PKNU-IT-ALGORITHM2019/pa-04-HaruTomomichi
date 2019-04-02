@@ -182,3 +182,48 @@ int partition_ver3(int data[], int p, int r) {
 	swap(i + 1, r);
 	return i + 1;
 }
+
+
+int analysis_heap(int i) {
+
+	if (2 * i + 2 > N - 1) {
+		return (2 * i + 1);
+	}
+	else if (data[2 * i + 1] > data[2 * i + 2]) {
+		return (2 * i + 1);
+	}
+	return (2 * i + 2);
+}
+
+void max_heapify(int i) {
+
+	if (2 * i + 1 > N - 1 && 2 * i + 2 > N - 1) {
+		return;
+	}
+
+	int k = analysis_heap(i);
+
+	if (data[i] >= data[k]) {
+		return;
+	}
+
+	swap(i, k);
+	max_heapify(k);
+}
+
+void heap_make() {
+	for (int i = N / 2; i >= 0; i--) {
+		max_heapify(i);
+	}
+}
+
+void heap_sort() {
+
+	heap_make();
+
+	for (int i = N - 1; i > 0; i--) {
+		swap(0, i);
+		N--;
+		max_heapify(0);
+	}
+}

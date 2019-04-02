@@ -20,4 +20,11 @@ int partition_ver1(int data[], int p, int r);
 int partition_ver2(int data[], int p, int r);
 
 int partition_ver3(int data[], int p, int r);
-#pragma once
+
+int analysis_heap(int i);
+
+void max_heapify(int i);
+
+void heap_make();
+
+void heap_sort();
