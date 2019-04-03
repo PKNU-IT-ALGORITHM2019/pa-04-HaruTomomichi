@@ -1,9 +1,11 @@
 #pragma once
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 
 #pragma warning(disable:4996)
 
-#define MAX 100
+#define MAX 100000
 
 typedef struct WEB {
 	char *ip;
@@ -14,9 +16,11 @@ typedef struct WEB {
 
 WEB data[MAX];
 
-void word_analysis(char *input);
+bool word_analysis(char *input);
 
 void read_data(char *token);
+
+void data_save(char temp[], int i);
 
 void sort_data(char *token);
 

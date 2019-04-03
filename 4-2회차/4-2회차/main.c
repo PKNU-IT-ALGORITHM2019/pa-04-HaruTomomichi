@@ -6,12 +6,19 @@ void main() {
 
 	char input[MAX];
 
-	scanf("%[^\n]", input);
+	while (1) {
+		printf("Command : ");
+		scanf("%[^\n]", input);
 
-	word_analysis(input);
+		if (!word_analysis(input)) {
+			break;
+		}
+
+		getchar();
+	}
 }
 
-void word_analysis(char *input) {
+bool word_analysis(char *input) {
 	char *token;
 
 	token = strtok(input, " ");
@@ -28,21 +35,40 @@ void word_analysis(char *input) {
 		print_data();
 	}
 	else {
-		return; // 사실상 의미는 없다고 생각 = exit
+		return false;
 	}
+	return true;
 }
 
 void read_data(char *token) {
-	FILE *fp = fopen(token, "r");
+	char temp[MAX];
 
-	// 쉼표로 구분되어 있다 / 수정해야함
+	FILE *fp = fopen(token, "r");
+	fgets(temp, MAX, fp);
 
 	while (!feof(fp)) {
-		fscanf(fp, "%s %s %s %s", data[N].ip, data[N].status, data[N].time, data[N].url);
+		fgets(temp, MAX, fp);
+		data_save(temp,N);
 		N++;
 	}
 
 	fclose(fp);
+}
+
+void data_save(char temp[],int i) {
+	char *token;
+
+	token = strtok(temp, ",");
+	data[i].ip = strdup(token);
+
+	token = strtok(NULL, ",");
+	data[i].time = strdup(token);
+
+	token = strtok(NULL, ",");
+	data[i].url = strdup(token);
+
+	token = strtok(NULL, ",");
+	data[i].status = strdup(token);
 }
 
 void sort_data(char *token) {
@@ -58,9 +84,8 @@ void sort_data(char *token) {
 	else if (strcmp(token, "-s") == 0) {
 		status = 3;
 	}
-	else {
-		return;
-	}
+	sub_sort_data(status,N);
+	return;
 }
 
 void print_data() {
@@ -89,4 +114,6 @@ void print_data() {
 		break;
 	}
 	}
+
+	printf("현재 저장된 데이터는 %d개\n", N);
 }

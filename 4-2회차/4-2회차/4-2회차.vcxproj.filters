@@ -34,5 +34,8 @@
     <None Include="webLog.csv">
       <Filter>소스 파일</Filter>
     </None>
+    <None Include="data.csv">
+      <Filter>소스 파일</Filter>
+    </None>
   </ItemGroup>
 </Project>
