@@ -4,6 +4,29 @@
 IP made_ip[2];
 TIME made_time[2];
 
+void special_sort(int N) {
+
+	int start = 0, count = 0;
+
+	for (int i = 0; i < N-1; i++) {
+		if (strcmp(data[i].ip, data[i + 1].ip) != 0) {
+			count++;
+			start = i - count + 1;
+
+			qsort(&data[start], count, sizeof(WEB), compare_data_by_time);
+			count = 0;
+		}
+		else {
+			count++;
+		}
+	}
+
+	count++;
+	start = N - count;
+	qsort(&data[start], count, sizeof(WEB), compare_data_by_time);
+	count = 0;
+}
+
 int day_analysis(char temp[]) {
 	char result[MAX];
 
@@ -139,13 +162,7 @@ int compare_data_by_ip(const void *p, const void *q) {
 
 	make_ip(a, b);
 
-	int result = made_ip[0].fourth - made_ip[1].fourth;
-
-	if (result != 0) {
-		return result;
-	}
-
-	result = made_ip[0].third - made_ip[1].third;
+	int result = made_ip[0].first - made_ip[1].first;
 
 	if (result != 0) {
 		return result;
@@ -157,7 +174,13 @@ int compare_data_by_ip(const void *p, const void *q) {
 		return result;
 	}
 
-	result = made_ip[0].first - made_ip[1].first;
+	result = made_ip[0].third - made_ip[1].third;
+
+	if (result != 0) {
+		return result;
+	}
+
+	result = made_ip[0].fourth - made_ip[1].fourth;
 
 	return result;
 }
@@ -208,6 +231,7 @@ void sub_sort_data(int status,int N) {
 	switch (status) {
 	case 0: {
 		qsort(data, N, sizeof(WEB), compare_data_by_ip);
+		special_sort(N);
 		break;
 	}
 	case 1: {

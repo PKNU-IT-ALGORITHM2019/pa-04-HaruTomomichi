@@ -19,6 +19,8 @@ typedef struct TIME {
 	int second;
 }TIME;
 
+void speacial_sort(int N);
+
 int day_analysis(char temp[]);
 
 int month_analysis(char temp[]);

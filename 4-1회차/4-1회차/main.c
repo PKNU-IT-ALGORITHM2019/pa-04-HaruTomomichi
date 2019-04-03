@@ -9,8 +9,8 @@ void main() {
 
 	srand((unsigned)time(NULL));
 
-	print1();
-	print2();
+	//print1();
+	//print2();
 	print3();
 	printf("Process Complete\n");
 	
