@@ -19,6 +19,10 @@ typedef struct TIME {
 	int second;
 }TIME;
 
+int day_analysis(char temp[]);
+
+int month_analysis(char temp[]);
+
 void make_time(WEB a, WEB b);
 
 void make_ip(WEB a, WEB b);
